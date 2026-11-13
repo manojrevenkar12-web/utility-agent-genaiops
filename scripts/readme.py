@@ -135,7 +135,7 @@ the text. The agent answers what it may, changes what the rules allow, and hands
 Building it is the smaller part. This repository is about running it: what decides a release, what the traces
 show, what a conversation costs, and what the team that takes it over needs.
 
-![Console]({REPO}/raw/main/docs/console.png)
+![Console](docs/console.png)
 
 ## Results
 
