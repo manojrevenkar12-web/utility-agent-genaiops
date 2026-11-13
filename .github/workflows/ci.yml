@@ -47,7 +47,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
-      - run: terraform fmt -check
+      - run: terraform fmt -check -diff
       - run: terraform init -backend=false && terraform validate
   web:
     runs-on: ubuntu-latest
