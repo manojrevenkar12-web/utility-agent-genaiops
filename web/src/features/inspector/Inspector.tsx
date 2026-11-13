@@ -19,7 +19,7 @@ export function Inspector({ examples }: { examples: Example[] }) {
       <div className="chips" role="tablist" aria-label="Conversations">
         {examples.map((e, k) => (
           <button key={e.id} role="tab" aria-selected={k === i} className="chip" onClick={() => setI(k)}>
-            {outcomeWords[e.outcome] ?? e.outcome}, {e.lang.toUpperCase()}
+            {outcomeWords[e.outcome] ?? e.outcome}{e.lang ? `, ${e.lang.toUpperCase()}` : ""}
           </button>
         ))}
       </div>

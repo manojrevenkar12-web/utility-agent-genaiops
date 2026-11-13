@@ -158,6 +158,7 @@ def examples(world, kb, cfg, release) -> list[dict]:
             {
                 "id": m.id,
                 "channel": m.channel,
+                "lang": t.lang,
                 "text": m.text,
                 "model_saw": r.model_input,
                 "intent": r.read.intent,

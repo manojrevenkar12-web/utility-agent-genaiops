@@ -20,7 +20,7 @@ export interface Design extends Summary {
 export interface Example {
   id: string;
   channel: string;
-  lang: string;
+  lang?: string;
   text: string;
   model_saw: string;
   intent: string;

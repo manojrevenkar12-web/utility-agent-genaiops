@@ -248,6 +248,7 @@
   {
    "id": "golden-0",
    "channel": "chat",
+   "lang": "de",
    "text": "Hallo, Wieso muss ich dieses Jahr so viel nachzahlen? Kundennummer 1065482, PLZ 20176.\nMit freundlichen Grüßen\nMehmet Popescu",
    "model_saw": "Hallo, Wieso muss ich dieses Jahr so viel nachzahlen? Kundennummer [KUNDENNR_1], PLZ [PLZ].\nMit freundlichen Grüßen\n[NAME]",
    "intent": "bill_explanation",
@@ -261,6 +262,7 @@
   {
    "id": "golden-1",
    "channel": "email",
+   "lang": "de",
    "text": "Kundennummer 1089215, PLZ 20998. Mein Zählerstand ist heute 41.917.\nViele Grüße\nKerem Wagner",
    "model_saw": "Kundennummer [KUNDENNR_1], PLZ [PLZ]. Mein Zählerstand ist heute 41.917.\nViele Grüße\n[NAME]",
    "intent": "meter_reading",
@@ -274,6 +276,7 @@
   {
    "id": "golden-2",
    "channel": "chat",
+   "lang": "de",
    "text": "Guten Tag, Können Sie den monatlichen Abschlag auf 240,50 Euro setzen? Meine Kundennummer ist 1044400, Postleitzahl 20709. Außerdem: gibt es bei Ihnen Ökostrom?\nViele Grüße\nHannah Nowak",
    "model_saw": "Guten Tag, Können Sie den monatlichen Abschlag auf 240,50 Euro setzen? Meine Kundennummer ist [KUNDENNR_1], Postleitzahl [PLZ]. Außerdem: gibt es bei Ihnen Ökostrom?\nViele Grüße\n[NAME]",
    "intent": "instalment_change",
@@ -287,6 +290,7 @@
   {
    "id": "golden-4",
    "channel": "email",
+   "lang": "en",
    "text": "My customer number is 1011419, post code 81944. I can't pay the open bill at once. Can I pay in instalments?\nBest regards\nElias Krause",
    "model_saw": "My customer number is [KUNDENNR_1], post code [PLZ]. I can't pay the open bill at once. Can I pay in instalments?\nBest regards\n[NAME]",
    "intent": "payment_plan",
@@ -300,6 +304,7 @@
   {
    "id": "golden-9",
    "channel": "chat",
+   "lang": "en",
    "text": "Hello, Can you send me a certificate for my tax return?\nBest regards\nPaul Demir",
    "model_saw": "Hello, Can you send me a certificate for my tax return?\nBest regards\n[NAME]",
    "intent": "other",
@@ -313,6 +318,7 @@
   {
    "id": "golden-11",
    "channel": "email",
+   "lang": "en",
    "text": "Hello, Customer number 1064950, postcode 22494. Why is my annual bill so high? Please reply to lea.kaya98@mailbox.example.\nThanks\nLea Kowalski",
    "model_saw": "Hello, Customer number [KUNDENNR_1], postcode [PLZ]. Why is my annual bill so high? Please reply to [EMAIL].\nThanks\n[NAME]",
    "intent": "bill_explanation",
