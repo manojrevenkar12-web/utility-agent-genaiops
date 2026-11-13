@@ -28,6 +28,8 @@ SIGNATURE = re.compile(
     r"(?im)^(?:viele grüße|mit freundlichen grüßen|beste grüße|lg|best regards|kind regards|"
     r"regards|thanks|danke|best),?\s*\n\s*([A-ZÄÖÜ][\w\-]+(?:\s+[A-ZÄÖÜ][\w\-]+){0,2})\s*$"
 )
+# found by the held-out run: any short closing line ("Gruß", "Cheers", a misspelt greeting) followed by a name
+SIGNATURE_LOOSE = re.compile(r"(?m)^[^\n.?!:]{1,30}\n\s*([A-ZÄÖÜ][\w\-]+(?:\s+[A-ZÄÖÜ][\w\-]+){1,2})\s*\Z")
 NAME_INTRO = re.compile(
     r"(?:mein name ist|ich bin|my name is|this is)\s+([A-ZÄÖÜ][\w\-]+\s+[A-ZÄÖÜ][\w\-]+)", re.IGNORECASE
 )
@@ -70,7 +72,7 @@ def redact(text: str) -> Redacted:
         t, n = rx.subn(f"[{label}]", t)
         if n:
             out.masked[label] = out.masked.get(label, 0) + n
-    for rx in (SIGNATURE, NAME_INTRO):
+    for rx in (SIGNATURE, SIGNATURE_LOOSE, NAME_INTRO):
 
         def name(m: re.Match) -> str:
             out.masked["NAME"] = out.masked.get("NAME", 0) + 1

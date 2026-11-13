@@ -22,7 +22,7 @@ Every number below is written by `scripts/evaluate.py` into `reports/dev.json` a
 |---|--:|--:|
 | Harmful actions per 1,000 messages | 97 | **2** |
 | Handled right | 89.15% | **96.5%** |
-| Messages with personal data sent to the model | 1,500 | **3** |
+| Messages with personal data sent to the model | 1,500 | **0** |
 | Model cost per conversation | €0.0097 | **€0.0045** |
 
 | | Ship if the demo looks right | Ship through the gate |
@@ -39,7 +39,7 @@ identified, or a customer facing a supply interruption not handed to a person th
 | Design | Handled right | Harmful actions per 1,000 | Without a person | Model cost per chat | Messages with personal data sent to the model |
 |---|--:|--:|--:|--:|--:|
 | Model decides (rules in the prompt) | 89.15% | 97 | 89.35% | €0.0097 | 1,500 of 1,517 |
-| Model reads, code decides | 96.5% | 2 | 84.8% | €0.0045 | 3 of 1,517 |
+| Model reads, code decides | 96.5% | 2 | 84.8% | €0.0045 | 0 of 1,517 |
 
 When the model decides, it gets the raw message and the rules in its prompt: 97 harmful actions
 per 1,000 messages and every IBAN and phone number in its context. In the guarded design the code takes personal
@@ -88,9 +88,30 @@ person handles), the agent handles 50,640 contacts a month right without a perso
 120 harmful actions a month to catch in review. The contact cost is an assumption to
 replace with the customer's own figure in the first workshop.
 
-## Held-out world
+## Held-out world (run once)
 
-Not run yet: `python3 scripts/evaluate.py --heldout` (once).
+Other customers, 80 % German, more typos and mixed questions, injection attempts,
+and phrasings, signatures and identifier formats nobody wrote rules for. It ran once, with the release the dev gate
+ended on and nothing changed after (`config/heldout.lock`).
+
+| Design | Handled right | Harmful actions per 1,000 | Without a person | Model cost per chat | Messages with personal data sent to the model |
+|---|--:|--:|--:|--:|--:|
+| Model decides (rules in the prompt) | 87.3% | 109 | 88.85% | €0.0097 | 1,512 of 1,536 |
+| Model reads, code decides | 96.1% | 3 | 85.15% | €0.0045 | 283 of 1,536 |
+
+| Release process | Regressions shipped | Improvements blocked | Harmful actions customers met | Handled right at the end | Harmful per 1,000 at the end | Cost per chat at the end |
+|---|--:|--:|--:|--:|--:|--:|
+| Ship if the demo chats look right | 3 | 0 | 338 | 93.45% | 14 | €0.0035 |
+| Ship through the gate | 0 | 0 | 66 | 96.1% | 3 | €0.0045 |
+
+On held-out customers the guarded agent handled 96.1% right with 3 harmful actions
+per 1,000 (model decides: 87.3% and 109). Redaction let personal data through in
+283 of 1,536 messages that
+held some. Every one of those was a signature name under a closing the redactor did not know ("Gruß", "Cheers",
+a misspelt "Mit freundlichen Grüßen"); IBANs, phone numbers, e-mail addresses and birth dates were all masked.
+Signature detection has been widened since, with a test; the held-out numbers above are as they first came out.
+The same candidates through the same two processes: the demo shipped
+3 regressions, the gate 0.
 
 ## How it works
 

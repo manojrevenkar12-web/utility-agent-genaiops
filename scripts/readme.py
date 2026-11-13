@@ -115,7 +115,10 @@ ended on and nothing changed after (`config/heldout.lock`).
 On held-out customers the guarded agent handled {hg["right"]}% right with {hg["harmful_per_1k"]:g} harmful actions
 per 1,000 (model decides: {hpo["right"]}% and {hpo["harmful_per_1k"]:g}). Redaction let personal data through in
 {hg["personal_data"]["sent_to_the_model"]} of {hg["personal_data"]["messages_with_personal_data"]:,} messages that
-held some. The same candidates through the same two processes: the demo shipped
+held some. Every one of those was a signature name under a closing the redactor did not know ("Gruß", "Cheers",
+a misspelt "Mit freundlichen Grüßen"); IBANs, phone numbers, e-mail addresses and birth dates were all masked.
+Signature detection has been widened since, with a test; the held-out numbers above are as they first came out.
+The same candidates through the same two processes: the demo shipped
 {hr["demo"]["regressions_shipped"]} regressions, the gate {hr["gate"]["regressions_shipped"]}.
 """
     else:

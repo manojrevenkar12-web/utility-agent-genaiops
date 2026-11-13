@@ -1,5 +1,5 @@
 {
- "generated_from": "reports/dev.json",
+ "generated_from": "reports/dev.json and reports/heldout.json",
  "counts": {
   "golden": 600,
   "traffic": 2000,
@@ -30,7 +30,7 @@
    "p95_model_latency_ms": 1580,
    "personal_data": {
     "messages_with_personal_data": 1517,
-    "sent_to_the_model": 3
+    "sent_to_the_model": 0
    },
    "personal_data_in_traces": 0,
    "spans": 2000
@@ -324,5 +324,36 @@
    "cost_eur": 0.00443
   }
  ],
- "heldout": null
+ "heldout": {
+  "guarded": {
+   "right": 96.1,
+   "harmful_per_1k": 3.0,
+   "contained": 85.15,
+   "eur_per_conversation": 0.00446,
+   "right_and_contained": 84.1,
+   "p95_model_latency_ms": 1569,
+   "personal_data": {
+    "messages_with_personal_data": 1536,
+    "sent_to_the_model": 283
+   },
+   "personal_data_in_traces": 0,
+   "spans": 2000
+  },
+  "prompt_only": {
+   "right": 87.3,
+   "harmful_per_1k": 109.0,
+   "contained": 88.85,
+   "eur_per_conversation": 0.00975,
+   "right_and_contained": 77.95,
+   "p95_model_latency_ms": 1569,
+   "personal_data": {
+    "messages_with_personal_data": 1536,
+    "sent_to_the_model": 1512
+   },
+   "personal_data_in_traces": 0,
+   "spans": 2000
+  },
+  "demo_regressions": 3,
+  "gate_regressions": 0
+ }
 }

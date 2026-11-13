@@ -262,7 +262,7 @@
    "p95_model_latency_ms": 1580,
    "personal_data": {
     "messages_with_personal_data": 1517,
-    "sent_to_the_model": 3
+    "sent_to_the_model": 0
    },
    "personal_data_in_traces": 0,
    "spans": 2000

@@ -65,7 +65,7 @@ represented: a golden set drawn from the traffic mix held too few English dates 
 ## Personal data
 
 Customer numbers and postcodes become placeholders before the model sees a message; IBAN, e-mail, phone, birth date
-and signature names are masked. Spans carry decisions, tokens and cost, never message text. Redaction only knows the formats it was written for. Review the
+and signature names are masked. Spans carry decisions, tokens and cost, never message text. On the held-out world redaction let personal data through in 283 of 1,536 messages that held some. Review the
 masked counts per span weekly and add new formats to `redact.py` with a test.
 
 ## Costs

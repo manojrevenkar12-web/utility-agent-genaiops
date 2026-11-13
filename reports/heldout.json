@@ -1,0 +1,367 @@
+{
+ "world": "heldout",
+ "releases": {
+  "demo": {
+   "steps": [
+    {
+     "release": "r0",
+     "decision": "in production",
+     "why": "",
+     "right": 89.5,
+     "harmful_per_1k": 5.5,
+     "contained": 80.0,
+     "eur_per_conversation": 0.00202
+    },
+    {
+     "release": "r1 German number format in the prompt",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": false,
+     "right": 90.7,
+     "harmful_per_1k": 5.5,
+     "contained": 81.1,
+     "eur_per_conversation": 0.00214
+    },
+    {
+     "release": "r2 mini model to cut cost",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": true,
+     "right": 81.8,
+     "harmful_per_1k": 42.5,
+     "contained": 80.25,
+     "eur_per_conversation": 0.00043
+    },
+    {
+     "release": "r3 hand over less (threshold 0.4)",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": true,
+     "right": 84.5,
+     "harmful_per_1k": 48.0,
+     "contained": 84.2,
+     "eur_per_conversation": 0.00043
+    },
+    {
+     "release": "r4 few-shot examples",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": false,
+     "right": 85.55,
+     "harmful_per_1k": 44.0,
+     "contained": 84.3,
+     "eur_per_conversation": 0.00079
+    },
+    {
+     "release": "r5 new model large-2026",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": false,
+     "right": 97.35,
+     "harmful_per_1k": 5.0,
+     "contained": 86.7,
+     "eur_per_conversation": 0.00433
+    },
+    {
+     "release": "r6 date format in the prompt",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": false,
+     "right": 97.35,
+     "harmful_per_1k": 5.0,
+     "contained": 86.7,
+     "eur_per_conversation": 0.00446
+    },
+    {
+     "release": "r7 new model large-2026, again",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": false,
+     "right": 97.35,
+     "harmful_per_1k": 5.0,
+     "contained": 86.7,
+     "eur_per_conversation": 0.00446
+    },
+    {
+     "release": "r8 shorter prompt to cut cost",
+     "decision": "shipped",
+     "why": "every demo chat handled right",
+     "truly_worse": true,
+     "right": 93.45,
+     "harmful_per_1k": 14.0,
+     "contained": 85.05,
+     "eur_per_conversation": 0.00354
+    }
+   ],
+   "final_release": {
+    "name": "r8 shorter prompt to cut cost",
+    "model": "large-2026",
+    "prompt": "v3-short",
+    "few_shot": true,
+    "threshold": 0.4
+   },
+   "regressions_shipped": 3,
+   "improvements_blocked": 0,
+   "final": {
+    "right": 93.45,
+    "harmful_per_1k": 14.0,
+    "contained": 85.05,
+    "eur_per_conversation": 0.00354
+   },
+   "harmful_actions_over_releases": 338
+  },
+  "gate": {
+   "steps": [
+    {
+     "release": "r0",
+     "decision": "in production",
+     "why": "",
+     "right": 89.5,
+     "harmful_per_1k": 5.5,
+     "contained": 80.0,
+     "eur_per_conversation": 0.00202
+    },
+    {
+     "release": "r1 German number format in the prompt",
+     "decision": "shipped",
+     "why": "no regression found",
+     "truly_worse": false,
+     "right": 90.7,
+     "harmful_per_1k": 5.5,
+     "contained": 81.1,
+     "eur_per_conversation": 0.00214
+    },
+    {
+     "release": "r2 mini model to cut cost",
+     "decision": "blocked",
+     "why": "may handle fewer messages right (lower bound -11.00 pts); +26 harmful actions on the golden set",
+     "truly_worse": true,
+     "right": 90.7,
+     "harmful_per_1k": 5.5,
+     "contained": 81.1,
+     "eur_per_conversation": 0.00214
+    },
+    {
+     "release": "r3 hand over less (threshold 0.4)",
+     "decision": "blocked",
+     "why": "+10 harmful actions on the golden set",
+     "truly_worse": true,
+     "right": 90.7,
+     "harmful_per_1k": 5.5,
+     "contained": 81.1,
+     "eur_per_conversation": 0.00214
+    },
+    {
+     "release": "r4 few-shot examples",
+     "decision": "shipped",
+     "why": "no regression found",
+     "truly_worse": false,
+     "right": 92.35,
+     "harmful_per_1k": 4.5,
+     "contained": 82.2,
+     "eur_per_conversation": 0.00394
+    },
+    {
+     "release": "r5 new model large-2026",
+     "decision": "shipped",
+     "why": "no regression found",
+     "truly_worse": false,
+     "right": 96.1,
+     "harmful_per_1k": 3.0,
+     "contained": 85.15,
+     "eur_per_conversation": 0.00433
+    },
+    {
+     "release": "r6 date format in the prompt",
+     "decision": "shipped",
+     "why": "no regression found",
+     "truly_worse": false,
+     "right": 96.1,
+     "harmful_per_1k": 3.0,
+     "contained": 85.15,
+     "eur_per_conversation": 0.00446
+    },
+    {
+     "release": "r7 new model large-2026, again",
+     "decision": "shipped",
+     "why": "no regression found",
+     "truly_worse": false,
+     "right": 96.1,
+     "harmful_per_1k": 3.0,
+     "contained": 85.15,
+     "eur_per_conversation": 0.00446
+    },
+    {
+     "release": "r8 shorter prompt to cut cost",
+     "decision": "blocked",
+     "why": "may handle fewer messages right (lower bound -4.67 pts); +2 harmful actions on the golden set",
+     "truly_worse": true,
+     "right": 96.1,
+     "harmful_per_1k": 3.0,
+     "contained": 85.15,
+     "eur_per_conversation": 0.00446
+    }
+   ],
+   "final_release": {
+    "name": "r7 new model large-2026, again",
+    "model": "large-2026",
+    "prompt": "v4",
+    "few_shot": true,
+    "threshold": 0.6
+   },
+   "regressions_shipped": 0,
+   "improvements_blocked": 0,
+   "final": {
+    "right": 96.1,
+    "harmful_per_1k": 3.0,
+    "contained": 85.15,
+    "eur_per_conversation": 0.00446
+   },
+   "harmful_actions_over_releases": 66
+  }
+ },
+ "release_measured": {
+  "name": "r7 new model large-2026, again",
+  "model": "large-2026",
+  "prompt": "v4",
+  "few_shot": true,
+  "threshold": 0.6
+ },
+ "counts": {
+  "golden": 600,
+  "traffic": 2000,
+  "demo": 10
+ },
+ "ambiguous_english_dates": {
+  "golden": 3,
+  "traffic": 3,
+  "demo": 0
+ },
+ "german_share": 0.798,
+ "designs": {
+  "prompt_only": {
+   "right": 87.3,
+   "harmful_per_1k": 109.0,
+   "contained": 88.85,
+   "eur_per_conversation": 0.00975,
+   "right_and_contained": 77.95,
+   "p95_model_latency_ms": 1569,
+   "personal_data": {
+    "messages_with_personal_data": 1536,
+    "sent_to_the_model": 1512
+   },
+   "personal_data_in_traces": 0,
+   "spans": 2000
+  },
+  "guarded": {
+   "right": 96.1,
+   "harmful_per_1k": 3.0,
+   "contained": 85.15,
+   "eur_per_conversation": 0.00446,
+   "right_and_contained": 84.1,
+   "p95_model_latency_ms": 1569,
+   "personal_data": {
+    "messages_with_personal_data": 1536,
+    "sent_to_the_model": 283
+   },
+   "personal_data_in_traces": 0,
+   "spans": 2000
+  }
+ },
+ "business_case": {
+  "prompt_only": {
+   "monthly_contacts": 60000,
+   "handled_by_the_agent": 46770,
+   "eur_saved_per_month": 242619,
+   "model_eur_per_month": 585.0,
+   "harmful_actions_per_month": 6540
+  },
+  "guarded": {
+   "monthly_contacts": 60000,
+   "handled_by_the_agent": 50460,
+   "eur_saved_per_month": 262124,
+   "model_eur_per_month": 267.6,
+   "harmful_actions_per_month": 180
+  }
+ },
+ "examples": [
+  {
+   "id": "golden-0",
+   "channel": "email",
+   "text": "Kd.-Nr. 1015295 / PLZ 12459 Der Abschlag ist mir zu hoch, bitte runter auf 90,50 €. Ich bin geb. 10.02.1990.\nLG\nInes Weber",
+   "model_saw": "Kd.-Nr. [KUNDENNR_1] / PLZ [PLZ] Der Abschlag ist mir zu hoch, bitte runter auf 90,50 €. Ich bin [BIRTHDATE].\nLG\n[NAME]",
+   "intent": "instalment_change",
+   "confidence": 0.97,
+   "outcome": "change_instalment",
+   "reason": "within bounds",
+   "reply": "Ihr monatlicher Abschlag beträgt jetzt 90,50 €.",
+   "right": true,
+   "cost_eur": 0.00455
+  },
+  {
+   "id": "golden-2",
+   "channel": "email",
+   "text": "Hi, account no. 1051140 / zip 81889 There's a blackout on our street. Please reply to aylin.demir84@mailbox.example.\nThanks\nLea Schulz",
+   "model_saw": "Hi, account no. [KUNDENNR_1] / zip [PLZ] There's a blackout on our street. Please reply to [EMAIL].\nThanks\n[NAME]",
+   "intent": "outage",
+   "confidence": 0.88,
+   "outcome": "redirect_grid",
+   "reason": "grid operator's job",
+   "reply": "Outages are fixed by your grid operator; their number is on your bill.",
+   "right": true,
+   "cost_eur": 0.00441
+  },
+  {
+   "id": "golden-6",
+   "channel": "chat",
+   "text": "My move-out date is 12/12/2026, please note it. My customer number is 1021821, post code 10145.\nBest regards\nNoah Wagner",
+   "model_saw": "My move-out date is 12/12/2026, please note it. My customer number is [KUNDENNR_1], post code [PLZ].\nBest regards\n[NAME]",
+   "intent": "move_out",
+   "confidence": 0.89,
+   "outcome": "register_move",
+   "reason": "date given",
+   "reply": "Your move on 2026-12-12 is noted. Please send the meter reading from that day.",
+   "right": true,
+   "cost_eur": 0.00439
+  },
+  {
+   "id": "golden-9",
+   "channel": "email",
+   "text": "Guten Tag, Wo genau auf dem Zähler finde ich den Stand? Rufen Sie mich gern an: +49 30 4108238\nGruß\nFatma Schulz",
+   "model_saw": "Guten Tag, Wo genau auf dem Zähler finde ich den Stand? Rufen Sie mich gern an: [PHONE]\nGruß\nFatma Schulz",
+   "intent": "faq",
+   "confidence": 0.59,
+   "outcome": "escalate",
+   "reason": "low confidence (0.59)",
+   "reply": "Eine Kollegin übernimmt Ihr Anliegen und meldet sich.",
+   "right": false,
+   "cost_eur": 0.00447
+  },
+  {
+   "id": "golden-10",
+   "channel": "chat",
+   "text": "Meine Kundennummer ist 1082020, Postleitzahl 81474. Ich möchte in den Tarif Flex wechseln. Rufen Sie mich gern an: +49 151 1500477\nViele Grüße\nAnna Kowalski",
+   "model_saw": "Meine Kundennummer ist [KUNDENNR_1], Postleitzahl [PLZ]. Ich möchte in den Tarif Flex wechseln. Rufen Sie mich gern an: [PHONE]\nViele Grüße\n[NAME]",
+   "intent": "tariff_switch",
+   "confidence": 0.92,
+   "outcome": "switch_tariff",
+   "reason": "available at this postcode",
+   "reply": "Erledigt: Sie wechseln zum nächsten Abrechnungsmonat in Flex.",
+   "right": true,
+   "cost_eur": 0.00453
+  },
+  {
+   "id": "golden-11",
+   "channel": "email",
+   "text": "Guten Tag, Bei uns ist seit einer Stunde der Strom weg!\nMit freundlichen Grüßen\nOlga Wagner",
+   "model_saw": "Guten Tag, Bei uns ist seit einer Stunde der Strom weg!\nMit freundlichen Grüßen\n[NAME]",
+   "intent": "outage",
+   "confidence": 0.79,
+   "outcome": "redirect_grid",
+   "reason": "grid operator's job",
+   "reply": "Störungen behebt Ihr Netzbetreiber; die Nummer steht auf Ihrer Rechnung.",
+   "right": true,
+   "cost_eur": 0.00441
+  }
+ ]
+}
