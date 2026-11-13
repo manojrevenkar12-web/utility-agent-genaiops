@@ -1,0 +1,42 @@
+@import "@fontsource-variable/onest";
+
+:root {
+  /* a control room on paper: cool sheet, deep teal ink, the amber of a live wire for what needs attention */
+  --paper: #eaf0f2;
+  --sheet: #f9fbfb;
+  --ink: #0f2a31;
+  --ink-soft: #4d6168;
+  --rule: #c9d5d9;
+  --tint: #dde6e9;
+  --live: #c77700;
+  --live-wash: #f6e7cc;
+  --right: #1c6f52;
+  --right-wash: #d6ece2;
+  --harm: #ad3326;
+  --harm-wash: #f4dcd8;
+  --masked: #2c5f8a;
+  --masked-wash: #dbe8f3;
+
+  --font: "Onest Variable", system-ui, sans-serif;
+  --step--1: 0.82rem;
+  --step-0: 1rem;
+  --step-1: 1.22rem;
+  --step-2: 1.55rem;
+  --step-3: clamp(2.2rem, 5.2vw, 3.7rem);
+  --figure: clamp(2rem, 4vw, 2.9rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2.5rem;
+  --space-7: 4rem;
+
+  --measure: 66ch;
+  --page: 1140px;
+  --radius: 6px;
+  --radius-pill: 999px;
+  --lane: 5px;
+  --focus: 3px solid var(--masked);
+}

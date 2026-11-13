@@ -1,0 +1,7 @@
+{
+ "name": "r7 new model large-2026, again",
+ "model": "large-2026",
+ "prompt": "v4",
+ "few_shot": true,
+ "threshold": 0.6
+}

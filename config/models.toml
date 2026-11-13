@@ -1,0 +1,10 @@
+# Price list the pipeline uses for cost accounting (EUR per million tokens). Assumed list prices; change per customer.
+[models.large-2025]
+input = 2.0
+output = 8.0
+[models.large-2026]
+input = 2.2
+output = 8.8
+[models.mini]
+input = 0.4
+output = 1.6

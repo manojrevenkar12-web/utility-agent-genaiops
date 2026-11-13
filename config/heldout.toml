@@ -1,0 +1,108 @@
+# The held-out world: other customers, more German, more typos and mixed questions, and phrasings, signatures and
+# identifiers nobody wrote rules for. Runs once: scripts/evaluate.py --heldout (see AGENTS.md).
+seed = 41
+today = "2026-11-02"
+accounts = 3000
+german_share = 0.8
+auth_missing = 0.10
+auth_wrong = 0.04
+injection_share = 0.05
+multi_share = 0.18
+typo_share = 0.22
+heldout_phrasing = true
+
+[sizes]
+golden = 600     # labelled by the service team; the release gate runs on it
+traffic = 2000   # what production sees between two releases
+demo = 10        # the happy-path chats a team shows in a demo
+
+[intent_mix]
+meter_reading = 0.2
+instalment_change = 0.14
+payment_plan = 0.1
+bill_explanation = 0.1
+tariff_switch = 0.06
+move_out = 0.08
+cancellation = 0.06
+account_info = 0.06
+outage = 0.04
+faq = 0.12
+other = 0.04
+
+[rules]  # the service team's rules: the truth the golden set is labelled with
+low_factor = 0.4
+high_factor = 2.0
+min_days = 7
+min_share = 0.8
+max_share = 2.0
+max_balance_eur = 1500
+max_rates = 6
+min_rate_eur = 50
+priority_dunning_stage = 2
+basic_supply_notice_days = 14
+
+[model_profile]
+prompt_only_extra_tokens = 2400   # the rules and tool descriptions travel in every prompt
+
+[model_profile.models.large-2025]
+intent_error = 0.035
+de_extra = 0.02
+typo_error = 0.03
+multi_error = 0.06
+de_number_error = 0.1
+en_date_error = 0.05
+conf_right = [9.0, 1.5]
+conf_wrong = [2.5, 3.0]
+system_tokens = 700
+output_tokens = 70
+latency_ms = 650
+ms_per_output_token = 12
+
+[model_profile.models.large-2026]
+intent_error = 0.02
+de_extra = 0.01
+typo_error = 0.02
+multi_error = 0.04
+de_number_error = 0.07
+en_date_error = 0.45
+conf_right = [9.0, 1.4]
+conf_wrong = [3.0, 2.5]
+system_tokens = 700
+output_tokens = 70
+latency_ms = 700
+ms_per_output_token = 11
+
+[model_profile.models.mini]
+intent_error = 0.07
+de_extra = 0.05
+typo_error = 0.06
+multi_error = 0.12
+de_number_error = 0.3
+en_date_error = 0.08
+conf_right = [8.0, 1.5]
+conf_wrong = [5.0, 2.0]
+system_tokens = 700
+output_tokens = 70
+latency_ms = 300
+ms_per_output_token = 5
+
+[model_profile.prompts]
+v1 = {}
+v2 = { de_number_error = -0.08, system_tokens = 60 }
+v3-short = { system_tokens = -300, multi_error = 0.12, intent_error = 0.01 }
+v4 = { de_number_error = -0.08, en_date_error = -0.4, system_tokens = 120 }
+
+[model_profile.few_shot]
+intent_error = -0.012
+de_extra = -0.01
+system_tokens = 900
+
+[model_profile.violations]  # how often a model that decides by itself breaks each rule
+accepts_implausible_reading = 0.45
+accepts_low_instalment = 0.35
+plan_outside_policy = 0.3
+invents_bill_reasons = 0.25
+switches_during_term = 0.3
+wrong_cancellation_date = 0.35
+answers_unidentified = 0.2
+follows_injection = 0.3

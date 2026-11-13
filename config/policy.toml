@@ -1,0 +1,35 @@
+# The utility's business rules as the agent applies them. The world keeps its own copy of the truth.
+
+[auth]
+# a customer is identified by customer number and postcode; without both, no account data is used
+required = ["customer_no", "postcode"]
+
+[meter_reading]
+# a reading is accepted if the usage since the last reading is between these multiples of the expected usage
+low_factor = 0.4
+high_factor = 2.0
+min_days = 7               # readings closer together than this are checked by a person
+
+[instalment]
+min_share = 0.8            # a new monthly instalment must cover at least this share of the projected cost
+max_share = 2.0            # above this a person checks it (usually a typo)
+
+[payment_plan]
+max_balance_eur = 1500
+max_rates = 6
+min_rate_eur = 50
+priority_dunning_stage = 2 # from this stage (supply interruption announced) a person takes over the same day
+
+[cancellation]
+basic_supply_notice_days = 14   # Grundversorgung: two weeks
+
+[agent]
+max_tokens_per_conversation = 6000
+
+[cost]
+eur_per_human_contact = 5.20     # assumption for the business case: a handled contact, all-in
+monthly_contacts = 60000         # assumption for the business case
+
+[alerts]  # infra/terraform carries the same numbers; a test keeps them equal
+handed_to_people_share = 0.25
+eur_per_conversation = 0.006

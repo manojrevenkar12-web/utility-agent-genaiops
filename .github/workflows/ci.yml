@@ -1,0 +1,61 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e '.[dev]'
+      - run: ruff check src tests scripts && ruff format --check src tests scripts
+      - run: python -m pytest -q
+      - name: The evaluation and the release gate reproduce the committed report
+        run: |
+          python scripts/evaluate.py
+          git diff --exit-code reports/dev.json config/release.json examples/accounts.json
+      - name: Quality gate on the release in production
+        run: |
+          python - <<'PY'
+          import json
+          r = json.load(open("reports/dev.json"))
+          g = r["designs"]["guarded"]
+          assert g["harmful_per_1k"] <= 5, g
+          assert g["right"] >= 95, g
+          assert g["personal_data"]["sent_to_the_model"] <= 5, g["personal_data"]
+          assert r["releases"]["gate"]["regressions_shipped"] < r["releases"]["demo"]["regressions_shipped"]
+          PY
+      - name: README, runbook and dashboard data match the reports
+        run: |
+          python scripts/readme.py && python scripts/handover.py
+          git diff --exit-code README.md docs/RUNBOOK.md web/public/data/console.json
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t utility-agent .
+      - name: The container answers
+        run: |
+          docker run -d -p 8080:8080 --name api utility-agent
+          for i in $(seq 1 30); do curl -sf localhost:8080/healthz && break; sleep 1; done
+          curl -sf localhost:8080/healthz || (docker logs api; exit 1)
+          curl -sf -X POST localhost:8080/v1/messages -H 'content-type: application/json' \
+            -d '{"id":"1","text":"Bei uns ist der Strom weg!"}' | grep -q redirect_grid
+  terraform:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: infra/terraform } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - run: terraform fmt -check
+      - run: terraform init -backend=false && terraform validate
+  web:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: web } }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "22", cache: npm, cache-dependency-path: web/package-lock.json }
+      - run: npm ci
+      - run: npm run build
+      - run: npm test

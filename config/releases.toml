@@ -1,0 +1,48 @@
+# What the team ships, and the gate every candidate must pass. Candidates are proposed in this order;
+# each one changes the release in production at the time.
+
+[gate]
+resamples = 2000
+alpha = 0.05
+max_right_drop = 0.005          # handle at most half a point fewer messages right (lower bound of the paired interval)
+max_extra_harm = 0              # no more harmful actions than production on the golden set
+max_eur_per_conversation = 0.006
+
+[production]
+name = "r0"
+model = "large-2025"
+prompt = "v1"
+few_shot = false
+threshold = 0.6
+
+[[candidate]]
+name = "r1 German number format in the prompt"
+changes = { prompt = "v2" }
+
+[[candidate]]
+name = "r2 mini model to cut cost"
+changes = { model = "mini" }
+
+[[candidate]]
+name = "r3 hand over less (threshold 0.4)"
+changes = { threshold = 0.4 }
+
+[[candidate]]
+name = "r4 few-shot examples"
+changes = { few_shot = true }
+
+[[candidate]]
+name = "r5 new model large-2026"
+changes = { model = "large-2026" }
+
+[[candidate]]
+name = "r6 date format in the prompt"
+changes = { prompt = "v4" }
+
+[[candidate]]
+name = "r7 new model large-2026, again"
+changes = { model = "large-2026" }
+
+[[candidate]]
+name = "r8 shorter prompt to cut cost"
+changes = { prompt = "v3-short" }

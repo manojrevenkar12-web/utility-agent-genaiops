@@ -1,0 +1,51 @@
+# Answers the agent may give without an account, each from one passage. Written by the utility's service team.
+
+[[passage]]
+id = "read-meter"
+title = "Reading your meter / Zählerstand ablesen"
+text = "Read the black digits before the comma on your electricity or gas meter and send them with the date. Die schwarzen Ziffern vor dem Komma ablesen und mit Datum übermitteln. Ableseanleitung, Zähler ablesen, Zählerstand mitteilen, meter reading guide."
+
+[[passage]]
+id = "basic-supply"
+title = "Basic supply / Grundversorgung"
+text = "Basic supply (Grundversorgung) is the default tariff for households; it can be cancelled with two weeks' notice. Der Grundversorgungstarif ist der Standardtarif und mit zwei Wochen Frist kündbar. Standardtarif, Grundversorger, default tariff."
+
+[[passage]]
+id = "instalment"
+title = "Monthly instalment / Abschlag"
+text = "Your monthly instalment (Abschlag) is an advance on the annual bill, based on your expected usage. Der Abschlag ist eine monatliche Vorauszahlung auf die Jahresrechnung. Abschlagszahlung, advance payment, monthly payment."
+
+[[passage]]
+id = "annual-bill"
+title = "Annual bill / Jahresabrechnung"
+text = "Once a year we compare your instalments with your actual usage; you get a refund or a back payment. Einmal im Jahr werden Abschläge und Verbrauch verrechnet: Guthaben oder Nachzahlung. Jahresabrechnung, Nachzahlung, Guthaben, refund, back payment, annual statement."
+
+[[passage]]
+id = "sepa"
+title = "Direct debit / SEPA-Lastschrift"
+text = "You can pay by SEPA direct debit; a new mandate needs your IBAN and a signature online. Lastschriftmandat erteilen oder ändern, Bankverbindung ändern, IBAN ändern, direct debit, bank details."
+
+[[passage]]
+id = "outage"
+title = "Power or gas outage / Störung"
+text = "Outages are handled by your grid operator, not by us; the grid operator's number is on your bill. Bei Stromausfall oder Gasgeruch den Netzbetreiber anrufen, Störungsnummer auf der Rechnung. Stromausfall, Gasgeruch, outage, blackout, grid operator."
+
+[[passage]]
+id = "green"
+title = "Green electricity / Ökostrom"
+text = "Our Oeko12 tariff is 100 percent renewable electricity with a 12-month price guarantee. Ökostromtarif aus erneuerbaren Energien, Preisgarantie zwölf Monate. renewable, green energy, Ökostrom."
+
+[[passage]]
+id = "price-change"
+title = "Price changes / Preisänderung"
+text = "We announce price changes at least one month ahead; you may then cancel without notice to the change date. Preisanpassungen werden einen Monat vorher angekündigt, Sonderkündigungsrecht. price increase, prices go up, Preiserhöhung, Sonderkündigungsrecht."
+
+[[passage]]
+id = "moving"
+title = "Moving house / Umzug"
+text = "Tell us your moving date and final meter reading; we can continue supply at your new address. Umzug melden mit Auszugsdatum und Zählerstand, Belieferung an neuer Adresse. moving, relocation, new address."
+
+[[passage]]
+id = "hardship"
+title = "Difficulty paying / Zahlungsschwierigkeiten"
+text = "If you cannot pay, contact us early: we offer instalment agreements and advice before any supply interruption. Bei Zahlungsschwierigkeiten früh melden: Ratenzahlung und Abwendungsvereinbarung vor einer Sperre. cannot pay, can't pay, payment difficulties, supply cut off, nicht zahlen, Sperre, disconnection."
