@@ -243,7 +243,7 @@ resource "azurerm_monitor_scheduled_query_rules_alert_v2" "handover_share" {
   evaluation_frequency = "PT15M"
   window_duration      = "PT1H"
   criteria {
-    query = <<-KQL
+    query                   = <<-KQL
       dependencies
       | where name == "conversation"
       | summarize handed = countif(tobool(customDimensions["agent.escalated"])), total = count()
@@ -270,7 +270,7 @@ resource "azurerm_monitor_scheduled_query_rules_alert_v2" "cost" {
   evaluation_frequency = "P1D"
   window_duration      = "P1D"
   criteria {
-    query = <<-KQL
+    query                   = <<-KQL
       dependencies
       | where name == "conversation"
       | summarize eur = avg(todouble(customDimensions["cost.eur"]))
